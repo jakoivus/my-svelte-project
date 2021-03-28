@@ -192,7 +192,7 @@ button:focus {
 	align-items: left;
 	margin-bottom: 1rem;
 	padding: 1.3rem 1rem;
-	border-radius: var(--mainBorderRadius);
+	border-radius: 8px;
 	background: orange;
 	box-shadow: var(--lightShadow);
   }
@@ -201,6 +201,7 @@ button:focus {
 	  color: seashell;
 	  margin-bottom: 0;   
 	  font-weight: 700;
+	  border-radius: 8px;
   }
   .outer-container h3 {
 	  color: seashell;
