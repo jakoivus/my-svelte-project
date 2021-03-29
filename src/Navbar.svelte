@@ -2,7 +2,7 @@
     //
     function handleClick() {
         window.alert("Lisää painettu")
-    }
+    }   
 </script>
 
 <style>

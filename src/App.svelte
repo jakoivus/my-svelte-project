@@ -17,8 +17,17 @@
 		console.log(lapset)
 	}
 
+	function addLapsi({name,age}) {
+        let lapsi = {id: Math.random() * Date.now(), name, age}
+		lapset = [lapsi, ...lapset ]
+		window.alert(lapsi)
+        console.log("lapset:", lapset)
+
+	}
 	//CONTEXT
 	setContext('remove', removeLapsi)
+	setContext('addLapsi', addLapsi)
+
 </script>
 
 <style>
@@ -37,3 +46,4 @@
 	</div>
 	</main>
 </div>
+ 
