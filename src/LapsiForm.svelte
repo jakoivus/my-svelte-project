@@ -2,22 +2,22 @@
     import { getContext } from 'svelte'
     let name =''
     let age = null
-    $: console.log('Name: ',{name},'Age: ', {age})
+    // $: console.log('Name: ',{name},'Age: ', {age}) // Debug log
     $: isEmpty = !name || !age
     import LapsetData from './lapset'
-    // export let addLapsi
-
+  
     //VARIABLES
 	let lapset = [...LapsetData]
 
     //FUNCTIONS
     function handleSubmit({e}) {
-        // e.preventDefault()
         addLapsi({name,age})
-        window.alert("Submit pressed")
+        // Cleaning addLapsi From inputs //
+        name =''
+        age=''
+
     }
     const addLapsi = getContext('addLapsi',{name,age})
-    // const removeLapsi = getContext('remove',lapsi.id)
 </script>
 
 <section class='form'>

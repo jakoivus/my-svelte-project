@@ -14,14 +14,14 @@
 	//FUNCTIONS
 	function removeLapsi (id) {
 		lapset = lapset.filter (item => item.id !== id)
-		console.log(lapset)
+		// console.log(lapset)
 	}
 
 	function addLapsi({name,age}) {
         let lapsi = {id: Math.random() * Date.now(), name, age}
 		lapset = [lapsi, ...lapset ]
-		window.alert(lapsi)
-        console.log("lapset:", lapset)
+		// window.alert(lapsi)
+        // console.log("lapset:", lapset)
 
 	}
 	//CONTEXT
