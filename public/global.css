@@ -67,7 +67,7 @@ input:disabled {
     background-size: cover;
 	resize: both;
     background-position: center center;
-
+    min-height: 97.5vh;
 }
 
 .container {
