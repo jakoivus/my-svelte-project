@@ -168,6 +168,14 @@ button:focus {
 	color: var(--darkGrey);
   }
 
+.empty-warning{
+	color:red;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
 
   .page-content {
 	margin: 0;
@@ -175,8 +183,6 @@ button:focus {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* margin-left: 15%;
-	width: 80%; */
   }
   
   .paragraph-text {
@@ -213,6 +219,9 @@ button:focus {
 	display: block;
 	margin: 0 auto;
 	box-shadow: var(--lightShadow);
+  }
+  .disabled {
+	  color:darkgray
   }
   .delete-btn {
 	color: red;

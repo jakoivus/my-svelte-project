@@ -19,9 +19,7 @@
 
 <article class='outer-container'>
     <div class='container'>
-        <div class='row'>
-        <!-- <div class='container-content flex-row'> -->
-            <div>
+        <div class='row'><div>
                 <h1>
                     {lapsi.name}    
                     <button class="amount-btn" on:click={toggleDetails}><i class="fa fa-caret-down" /></button>
@@ -40,5 +38,4 @@
             </div> 
         </div>
     </div>
-
 </article>
