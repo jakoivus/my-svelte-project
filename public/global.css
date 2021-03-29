@@ -65,8 +65,9 @@ input:disabled {
 	background-repeat: no-repeat;
     -moz-background-size: cover;
     background-size: cover;
+	resize: both;
     background-position: center center;
-    height: 97.5vh;	
+
 }
 
 .container {
