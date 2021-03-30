@@ -10,6 +10,13 @@
 	
 	//VARIABLES
 	let lapset = [...LapsetData]
+	//SET EDITING VARIABLES
+	let setName = ''
+	let setAge = ''
+	let setId = ''
+
+	//RACTIVE
+	$: isEditing = setId ? true : false 
 
 	//FUNCTIONS
 	function removeLapsi (id) {
@@ -22,11 +29,25 @@
 		lapset = [lapsi, ...lapset ]
 		// window.alert(lapsi)
         // console.log("lapset:", lapset)
+	}
+
+	function setEditedLapsi (id) {
+		let lapsi = lapset.find(item => item.id === id)
+		console.log("setEditedlapsi",lapsi)
+		setId = lapsi.id
+		setName = lapsi.name
+		setAge = lapsi.age
+		console.log("EDITING", lapsi.id, lapsi.name, lapsi.age)
+	}
+	function modifyLapsi({name, age}) {
+		console.log("MODIFY", name, age)
 
 	}
 	//CONTEXT
-	setContext('remove', removeLapsi)
+	setContext('removeLapsi', removeLapsi)
 	setContext('addLapsi', addLapsi)
+	setContext('setEditedLapsi', setEditedLapsi)
+	setContext('modifyLapsi', modifyLapsi)
 
 </script>
 
@@ -39,9 +60,10 @@
 <div class='bg-container'>
 	<Navbar />
 	<main >
+		{console.log(isEditing)}
 	<div class='page-content paragraph-text'>
 		<Title title='Lista lapsista' />
-		<LapsiForm />
+		<LapsiForm name={setName} age={setAge} {isEditing}  />
 		<LapsetList {lapset}/>
 	</div>
 	</main>

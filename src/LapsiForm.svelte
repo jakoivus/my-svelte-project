@@ -1,7 +1,9 @@
 <script>
     import { getContext } from 'svelte'
-    let name =''
-    let age = null
+    export let name = ''
+    export let age = null
+    export let isEditing 
+    // export let modifyLapsi
     // $: console.log('Name: ',{name},'Age: ', {age}) // Debug log
     $: isEmpty = !name || !age
     import LapsetData from './lapset'
@@ -10,14 +12,18 @@
 	let lapset = [...LapsetData]
 
     //FUNCTIONS
-    function handleSubmit({e}) {
+    function handleSubmit() {
+        if (isEditing) {
+            modifyLapsi({name, age})
+        }
+        else {
         addLapsi({name,age})
         // Cleaning addLapsi From inputs //
         name =''
-        age=''
-
+        age=''}
     }
     const addLapsi = getContext('addLapsi',{name,age})
+    const modifyLapsi = getContext('modifyLapsi',{name, age})
 </script>
 
 <section class='form'>
@@ -48,7 +54,9 @@
             <h1>Ole hyvä ja lisää nimi ja ikä</h1>
         </div>
         {/if}
-        <button type='submit' class='btn btn-block' class:disabled={isEmpty} disabled={isEmpty}>Lisää lapsi</button>
+        <button type='submit' class='btn btn-block' class:disabled={isEmpty} disabled={isEmpty}>
+            {#if isEditing} Muuta tietoja {:else} Lisää lapsi {/if}
+            </button>
     </form>        
 
     </div>

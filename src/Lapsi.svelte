@@ -8,7 +8,11 @@
         function toggleDetails () {
             displayDetails = !displayDetails
         }
-        const removeLapsi = getContext('remove',lapsi.id)
+        const removeLapsi = getContext('removeLapsi',lapsi.id)
+        const setEditedLapsi = getContext('setEditedLapsi',lapsi.id)
+        const modifyLapsi = getContext('modifyLapsi', lapsi.id)
+
+
 </script>
 
 <style>
@@ -33,7 +37,7 @@
 
             </div>
             <div class='row-right'> 
-                <button class="btn icon-size"><i class="fa fa-edit edit-btn"></i></button>
+                <button class="btn icon-size" on:click={() => setEditedLapsi(lapsi.id)}><i class="fa fa-edit edit-btn"></i></button>
                 <button class="btn icon-size" on:click={() => removeLapsi(lapsi.id)}><i class="fa fa-trash delete-btn"></i></button>
             </div> 
         </div>
