@@ -1,15 +1,18 @@
 <script>;
-	import {setContext } from 'svelte'
+	import {setContext, onMount, afterUpdate } from 'svelte'
+
+	//COMPONENTS
 	import Navbar from './Navbar.svelte'
 	import LapsiForm from './LapsiForm.svelte'
 	import Title from './Title.svelte'
 	
 	//DATA
 	import LapsetList from './LapsetList.svelte'
-	import LapsetData from './lapset'
+	// import LapsetData from './lapset'
 	
 	//VARIABLES
-	let lapset = [...LapsetData]
+	let lapset = []
+	// let lapset = [...LapsetData]
 	//SET EDITING VARIABLES
 	let setName = ''
 	let setAge = ''
@@ -25,7 +28,7 @@
 		isFormOpen = true
 	}
 	
-	function closeForm() {
+		function closeForm() {
 		isFormOpen = false
 		setId = ''
 		setName = ''
@@ -40,13 +43,14 @@
 	function addLapsi({name,age}) {
         let lapsi = {id: Math.random() * Date.now(), name, age}
 		lapset = [lapsi, ...lapset ]
+		closeForm()
 		// window.alert(lapsi)
         // console.log("lapset:", lapset)
 	}
 
 	function setEditedLapsi (id) {
 		let lapsi = lapset.find(item => item.id === id)
-		console.log("EDITING",lapsi)
+		// console.log("EDITING",lapsi)
 		setId = lapsi.id
 		setName = lapsi.name
 		setAge = lapsi.age
@@ -59,9 +63,8 @@
 		setId = ''
 		setName = ''
 		setAge = ''
-		console.log("MODIFY", name, age)
 		closeForm()
-
+		// console.log("MODIFY", name, age)
 	}
 	//CONTEXT
 	setContext('removeLapsi', removeLapsi)
@@ -70,6 +73,22 @@
 	setContext('modifyLapsi', modifyLapsi)
 	setContext('showForm', showForm)
 	setContext('closeForm', closeForm)
+
+	//LOCALSTORAGE
+	function setLocalStorage() {
+		localStorage.setItem("lapset", JSON.stringify(lapset))
+	}
+
+	//LIFECYCLE METHODS
+	onMount (() => {lapset = localStorage.getItem('lapset') ? 
+					JSON.parse(localStorage.getItem('lapset'))
+					: []
+	})
+
+	afterUpdate(() =>{
+		setLocalStorage()
+	})
+
 
 </script>
 
@@ -82,7 +101,7 @@
 <div class='bg-container'>
 	<Navbar />
 	<main >
-		{console.log(isEditing)}
+		<!-- {console.log(isEditing)} -->
 	<div class='page-content paragraph-text'>
 		<Title title='Lista lapsista' />
 		{#if isFormOpen}
