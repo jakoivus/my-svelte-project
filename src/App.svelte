@@ -47,6 +47,7 @@
 		setId = lapsi.id
 		setName = lapsi.name
 		setAge = lapsi.age
+		showForm()
 	}
 	function modifyLapsi({name, age}) {
 		lapset = lapset.map(item => {

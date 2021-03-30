@@ -25,6 +25,7 @@
     const addLapsi = getContext('addLapsi',{name,age})
     const modifyLapsi = getContext('modifyLapsi',{name, age})
     const closeForm = getContext('closeForm')
+
 </script>
 
 <section class='form'>
