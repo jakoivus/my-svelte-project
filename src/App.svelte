@@ -27,6 +27,9 @@
 	
 	function closeForm() {
 		isFormOpen = false
+		setId = ''
+		setName = ''
+		setAge = ''
 	}
 
 	function removeLapsi (id) {
@@ -57,6 +60,7 @@
 		setName = ''
 		setAge = ''
 		console.log("MODIFY", name, age)
+		closeForm()
 
 	}
 	//CONTEXT
