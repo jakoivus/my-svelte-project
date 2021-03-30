@@ -14,11 +14,21 @@
 	let setName = ''
 	let setAge = ''
 	let setId = ''
+	//TOGGLE FORM VARIABLES
+	let isFormOpen = false
 
 	//RACTIVE
 	$: isEditing = setId ? true : false 
 
 	//FUNCTIONS
+	function showForm() {
+		isFormOpen = true
+	}
+	
+	function closeForm() {
+		isFormOpen = false
+	}
+
 	function removeLapsi (id) {
 		lapset = lapset.filter (item => item.id !== id)
 		// console.log(lapset)
@@ -33,13 +43,18 @@
 
 	function setEditedLapsi (id) {
 		let lapsi = lapset.find(item => item.id === id)
-		console.log("setEditedlapsi",lapsi)
+		console.log("EDITING",lapsi)
 		setId = lapsi.id
 		setName = lapsi.name
 		setAge = lapsi.age
-		console.log("EDITING", lapsi.id, lapsi.name, lapsi.age)
 	}
 	function modifyLapsi({name, age}) {
+		lapset = lapset.map(item => {
+			return item.id === setId ? {...item, name, age} :item // {...item} Alternative
+		})
+		setId = ''
+		setName = ''
+		setAge = ''
 		console.log("MODIFY", name, age)
 
 	}
@@ -48,6 +63,8 @@
 	setContext('addLapsi', addLapsi)
 	setContext('setEditedLapsi', setEditedLapsi)
 	setContext('modifyLapsi', modifyLapsi)
+	setContext('showForm', showForm)
+	setContext('closeForm', closeForm)
 
 </script>
 
@@ -63,7 +80,9 @@
 		{console.log(isEditing)}
 	<div class='page-content paragraph-text'>
 		<Title title='Lista lapsista' />
+		{#if isFormOpen}
 		<LapsiForm name={setName} age={setAge} {isEditing}  />
+		{/if}
 		<LapsetList {lapset}/>
 	</div>
 	</main>

@@ -24,6 +24,7 @@
     }
     const addLapsi = getContext('addLapsi',{name,age})
     const modifyLapsi = getContext('modifyLapsi',{name, age})
+    const closeForm = getContext('closeForm')
 </script>
 
 <section class='form'>
@@ -34,7 +35,7 @@
         <div class='row'>   
         <h1>lisää lapsi</h1>
             <div class='row-right'> 
-                <button type='button' class='close-btn'><i class='fa fa-times'>Sulje</button>
+                <button type='button' class='close-btn' on:click={closeForm} ><i class='fa fa-times'>Sulje</button>
             </div>
         </div>
         <form on:submit|preventDefault={handleSubmit}>

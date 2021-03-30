@@ -1,8 +1,13 @@
 <script>
-    //
+    import { getContext } from 'svelte'
+    
+    //FUNCTIONS
     function handleClick() {
-        window.alert("Lisää painettu")
+        showForm()
     }   
+
+    const showForm = getContext('showForm')
+    
 </script>
 
 <style>
