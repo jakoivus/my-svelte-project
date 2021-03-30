@@ -85,10 +85,9 @@
 					: []
 	})
 
-	afterUpdate(() =>{
-		setLocalStorage()
+	afterUpdate(() =>{		//Not best place for time consuming i.e. async operations since
+		setLocalStorage()	// afterUpdate run right away after component Mount
 	})
-
 
 </script>
 
