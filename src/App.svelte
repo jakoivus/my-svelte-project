@@ -20,7 +20,7 @@
 	//TOGGLE FORM VARIABLES
 	let isFormOpen = false
 
-	//RACTIVE
+	//REACTIVE
 	$: isEditing = setId ? true : false 
 
 	//FUNCTIONS
