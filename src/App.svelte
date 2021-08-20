@@ -17,6 +17,7 @@
 	let setName = ''
 	let setAge = ''
 	let setId = ''
+	
 	//TOGGLE FORM VARIABLES
 	let isFormOpen = false
 
